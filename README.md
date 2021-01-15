@@ -17,7 +17,14 @@ Usage Overview
  
 #### User join role
 When a new user joins the server, the bot can automatically assign a role to this user.
-The role ID needs to be set in the `.env` file under `JOIN_ROLE`
+The role ID needs to be set in the `.env` file under `WELCOME_ROLE_IDS` (first entry)
+
+#### Gated Welcome Channels
+When a new user joins the server, you can have visibility locked to a set of welcome channels setup in your `.env` file
+under `WELCOME_CHANNEL_IDS` as a comma separated list. You will also need `WELCOME_ROLE_IDS` defined in your `.env` file
+as well (one for each welcome channel). The bot will navigate the user through the welcome channels, by adding/removing the
+appropriate roles to show visibility to the correct welcome channel. Upon complete of the welcome channel flow, the bot will
+assign a role to the user, defined in your `.env` file under `GUEST_ROLE_ID`.
 
 #### Role Assignment Messages (RAM)
 This bot will also handle role assignments for channels listed in the `RAM_CHANNELS` of the `.env` file.

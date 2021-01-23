@@ -1,5 +1,10 @@
 require('dotenv').config();
 
+const translateMessage = require('./util/translate-message');
+const helpers = require('./util/role-helpers');
+const monitor = require('./util/sentry');
+const {Client} = require('discord.js');
+
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const GUILD_ID = process.env.GUILD_ID;
 
@@ -14,11 +19,6 @@ const RAM_CHANNEL_IDS = process.env.RAM_CHANNEL_IDS.split(',');
 const WELCOME_ROLES = new Map();
 const WELCOME_CHANNELS = new Map();
 const RAM_CHANNELS = new Map();
-
-const translateMessage = require('./util/translate-message');
-const helpers = require('./util/role-helpers');
-const monitor = require('./util/sentry');
-const {Client} = require('discord.js');
 
 monitor.init();
 

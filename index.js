@@ -17,7 +17,10 @@ const RAM_CHANNELS = new Map();
 
 const translateMessage = require('./util/translate-message');
 const helpers = require('./util/role-helpers');
+const monitor = require('./util/sentry');
 const {Client} = require('discord.js');
+
+monitor.init();
 
 const client = new Client({
     partials: ['REACTION']

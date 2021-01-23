@@ -55,21 +55,13 @@ To access a channel, __react to this post__ with the corresponding emoji
 #### `.env`
 
 ```
-BOT_TOKEN=<bot_token>
-
-# guild id
-GUILD_ID=<guild_id>
-
-# a list of welcome channels and roles
-WELCOME_CHANNEL_IDS=<channel_id>,<channel_id>
-WELCOME_ROLE_IDS=<role_id>,<role_id>
-
-# the emoji id that is used on welcome channel reactions
-WELCOME_EMOJI_ID=<emoji_id>
-
-# channels the role assignment bot listens on
-RAM_CHANNEL_IDS=<channel_id>,<channel_id>
-
-# role given after welcome channels complete
-GUEST_ROLE_ID=<role_id>
+NODE_ENV=
+SENTRY_DSN=
+BOT_TOKEN=
+GUILD_ID=
+WELCOME_CHANNEL_IDS=
+WELCOME_ROLE_IDS=
+WELCOME_EMOJI_ID=
+RAM_CHANNEL_IDS=
+GUEST_ROLE_ID=
 ```

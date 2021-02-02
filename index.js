@@ -141,11 +141,13 @@ client.on('ready', async () => {
     }
 });
 
-client.on('guildMemberAdd', (member) => {
+client.on('guildMemberAdd', async (member) => {
     if (WELCOME_ROLES.size > 0) {
         const role = WELCOME_ROLES.entries().next().value;
 
-        member.roles.add(role);
+        if (!member.roles.cache.has(role.id)) {
+            await member.roles.add(role);
+        }
     }
 });
 

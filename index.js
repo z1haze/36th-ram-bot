@@ -143,7 +143,7 @@ client.on('ready', async () => {
 
 client.on('guildMemberAdd', async (member) => {
     if (WELCOME_ROLES.size > 0) {
-        const role = WELCOME_ROLES.entries().next().value;
+        const role = WELCOME_ROLES.values().next().value;
 
         if (!member.roles.cache.has(role.id)) {
             await member.roles.add(role);

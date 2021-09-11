@@ -32,7 +32,7 @@ client.on('ready', async () => {
             RAM_CHANNELS.set(channelId, channel);
 
             // setup listeners on each RAM message in the channel
-            channel.messsages.fetch()
+            channel.messages.fetch()
                 .then((messages) => messages.each(processMessage));
         } else {
             throw new Error(`RAM channel not found matching id: ${channelId}`);

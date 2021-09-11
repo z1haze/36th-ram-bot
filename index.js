@@ -34,7 +34,8 @@ client.on('ready', async () => {
 
             // setup listeners on each RAM message in the channel
             channel.messages.fetch()
-                .then((messages) => messages.each(processMessage));
+                .then((messages) =>
+                    messages.each((message) => processMessage(message)));
         } else {
             throw new Error(`RAM channel not found matching id: ${channelId}`);
         }
@@ -94,7 +95,7 @@ client.on('messageReactionRemove', (messageReaction, user) => {
     if (user.bot) {
         return;
     }
-    
+
     if (RAM_CHANNELS.has(messageReaction.message.channel.id)) {
         const member = messageReaction.message.guild.members.cache.get(user.id);
 

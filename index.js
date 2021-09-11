@@ -11,6 +11,7 @@ const GUILD_ID = process.env.GUILD_ID;
 const RAM_CHANNELS = new Map();
 
 const client = new Client({
+    intents : ['GUILDS', 'GUILD_MESSAGE_REACTIONS', 'GUILD_EMOJIS_AND_STICKERS'],
     partials: ['REACTION']
 });
 

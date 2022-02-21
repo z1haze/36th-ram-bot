@@ -17,7 +17,9 @@ const translateLine = (line, message) => {
 };
 
 module.exports = (message, oldMessage) => {
-    const lines = [...message.content.matchAll(/>* *([^ \n]+) [^\n]*-[^\n]*<@&([0-9]+)>/g)];
+    const pattern = />* *([^ \n]+) [^\n]*-[^\n]*<@&([0-9]+)>/g;
+
+    const lines = [...message.content.matchAll(pattern)];
     const translations = new Map();
     const toRemove = new Set();
 
@@ -34,7 +36,7 @@ module.exports = (message, oldMessage) => {
      * Check the previous message (if edited) and keep track of any emoji/roles that were removed
      */
     if (oldMessage) {
-        const lines = oldMessage.content.matchAll(/>* *([^ \n]+) [^\n]*-[^\n]*<@&([0-9]+)>/g);
+        const lines = oldMessage.content.matchAll(pattern);
 
         for (const line of lines) {
             const [currentEmoji] = translateLine(line, message);

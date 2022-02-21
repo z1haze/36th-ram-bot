@@ -16,7 +16,6 @@ const client = new Client({
 });
 
 client.on('ready', async () => {
-    // eslint-disable-next-line no-console
     console.info(`Logged in as ${client.user.tag}!`);
 
     const guild = client.guilds.cache.get(GUILD_ID);
@@ -32,7 +31,7 @@ client.on('ready', async () => {
         if (channel) {
             RAM_CHANNELS.set(channelId, channel);
 
-            // setup listeners on each RAM message in the channel
+            // fetch messages in channel and bind listeners to them
             channel.messages.fetch()
                 .then((messages) =>
                     messages.each((message) => processMessage(message)));
@@ -125,7 +124,7 @@ function processMessage (message, oldMessage = null) {
         const [, emoji] = line;
 
         message.react(emoji)
-            .catch((e) => console.error(e.message)); // eslint-disable-line no-console
+            .catch((e) => console.error(e.message));
     }
 
     // remove any reactions that should not be
@@ -133,7 +132,7 @@ function processMessage (message, oldMessage = null) {
         for (const [, reaction] of message.reactions.cache) {
             if (toRemove.has(reaction.emoji.name)) {
                 reaction.remove()
-                    .catch((e) => console.error(e.message)); // eslint-disable-line no-console
+                    .catch((e) => console.error(e.message));
             }
         }
     }
@@ -152,10 +151,8 @@ function handleUserReaction (messageReaction, member, remove = false) {
     if (translations.has(messageReaction.emoji.name)) {
         const role = translations.get(messageReaction.emoji.name);
 
-        if (remove) {
-            helpers.takeRole(messageReaction.message.guild, member, role);
-        } else {
-            helpers.giveRole(messageReaction.message.guild, member, role);
-        }
+        remove
+            ? helpers.takeRole(messageReaction.message.guild, member, role)
+            : helpers.giveRole(messageReaction.message.guild, member, role);
     }
 }

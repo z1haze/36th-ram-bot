@@ -3,19 +3,14 @@
 Role Assignment Management (RAM) Bot
 ---
 
-> A discord bot to automatically assign roles to users based on reactions
-
-What It Does
----
-
-- [x] Utilizes a custom message format for role assignment messages
+> A discord bot to automatically assign/remove roles to users based on reactions
  
 Usage Overview
 ---
 
 #### Role Assignment Messages (RAM)
-This bot will also handle role assignments for channels listed in the `RAM_CHANNELS` of the `.env` file.
-The example below shows how to properly format a message so that the bot will understand.
+This bot will only handle role assignments for channels listed in the `RAM_CHANNELS` of the `.env` file.
+The example below shows how to properly format a message so that the bot will process it.
 Keep note that the (`>`) and single dash (`-`) are mandatory characters.
 
 The format for a role assignment message is as follows:

@@ -84,7 +84,11 @@ client.on('messageReactionAdd', (messageReaction, user) => {
     if (RAM_CHANNELS.has(messageReaction.message.channel.id)) {
         const member = messageReaction.message.guild.members.cache.get(user.id);
 
-        handleUserReaction(messageReaction, member);
+        if (member) {
+            handleUserReaction(messageReaction, member);
+        } else {
+            console.error(`Unable to find user ${user.username}`);
+        }
     }
 });
 
@@ -99,7 +103,11 @@ client.on('messageReactionRemove', (messageReaction, user) => {
     if (RAM_CHANNELS.has(messageReaction.message.channel.id)) {
         const member = messageReaction.message.guild.members.cache.get(user.id);
 
-        handleUserReaction(messageReaction, member, true);
+        if (member) {
+            handleUserReaction(messageReaction, member, true);
+        } else {
+            console.error(`Unable to find user ${user.username}`);
+        }
     }
 });
 
